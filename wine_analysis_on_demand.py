@@ -39,21 +39,90 @@ plt.show()
 print("\n Variáveis independentes:\n", wine.feature_names)
 print("\n Classes das variáveis alvo (target):\n", wine.target_names)
 
-print("\nConsiderando que: "
-        "\n--> Os atributos 'ash', 'alcalinity_ash' e 'magnesium' não possuem correlação acima de 0,5 com os demais atributos"
-        "\n--> Os atributos 'flavanoids' e 'od280/od315_of_diluted_wines' possuem 5 correlações acima de 0,5 com os demais atributos"
-        "\n--> O atributo 'total_phenols' possui 4 correlações acima de 0,5 com os demais atributos\n"
-        "-------------------------------------------------------------------------------------------\n"
-        "\nSerão realizadas as seguintes análises:"
-        "\n1) Modelo treinado apenas com a coluna 'flavanoids'"
-        "\n2) Modelo treinado apenas com a coluna 'od280/od315_of_diluted_wines'"
-        "\n3) Modelo treinado com as colunas 'flavanoids' + 'od280/od315_of_diluted_wines'"
-        "\n4) Modelo treinado com as colunas 'flavanoids' + 'total_phenols' + 'ash' + 'alcalinity_of_ash' + 'magnesium'"
-        "\n5) Modelo treinado com as colunas 'od280/od315_of_diluted_wines' + 'total_phenols + 'ash' + 'alcalinity_of_ash' + 'magnesium'"
-        "\n6) Modelo treinado com as colunas 'flavanoids' + 'od280/od315_of_diluted_wines' + 'total_phenols + 'ash' + 'alcalinity_of_ash' + 'magnesium'")
-
-
 #### Criação das bases de treinamento de cada modelo ####
+
+## Base de treinamento modelo 1 sendo criada e exibida ##
+X_mod1 = df.drop(columns=['od280/od315_of_diluted_wines', 'magnesium', 'proanthocyanins', 'proline', 'hue', 'color_intensity', 'nonflavanoid_phenols', 'alcalinity_of_ash', 'malic_acid', 'total_phenols', 'alcohol', 'ash'])
+print("\n Wine Data mod 1: ")
+print(X_mod1)
+## Classificando o 'target' e exibindo as classes da base ##
+print("\nClassificação Alvo (0,1,2): ")
+y = wine.target
+print(y)
+## Exibindo a quantidade de instâncias e de variáveis da base de treinamento ##
+print('\nVariáveis independentes:', X_mod1.shape)
+print('Variáveis alvo (target)', y.shape)
+## Fazendo o Split da base de treino e da base de teste do modelo 1 ##
+X_treino_mod1, X_teste_mod1, y_treino_mod1, y_teste_mod1 = train_test_split(X_mod1, y, test_size= 0.3, stratify= y, shuffle= True, random_state= None)
+## Exibindo dados do treinamento do modelo 1 ##
+print("\n---------------------------")
+print("\nX Treino: ", len(X_treino_mod1))
+print("\nShape dos dados de treino: ", X_treino_mod1.shape, y_treino_mod1.shape)
+print("\nX Treino veja:\n ", X_treino_mod1)
+print("\ny Treino:\n ", y_treino_mod1)
+## Exibindo dados de teste do modelo 1 ##
+print("---------------------------")
+print("\nX Teste: ", len(X_teste_mod1))
+print("\nShape dos dados de teste: ", X_teste_mod1.shape, y_teste_mod1.shape)
+print("\nX Teste veja:\n ", X_teste_mod1)
+print("\ny Teste:\n ", y_teste_mod1)
+print("---------------------------\n")
+
+
+## Base de treinamento modelo 2 sendo criada e exibida ##
+X_mod2 = df.drop(columns=['flavanoids', 'magnesium', 'proanthocyanins', 'proline', 'hue', 'color_intensity', 'nonflavanoid_phenols', 'alcalinity_of_ash', 'malic_acid', 'total_phenols', 'alcohol', 'ash'])
+print("\n Wine Data mod 2: ")
+print(X_mod2)
+## Classificando o 'target' e exibindo as classes da base ##
+print("\nClassificação Alvo (0,1,2): ")
+y = wine.target
+print(y)
+## Exibindo a quantidade de instâncias e de variáveis da base de treinamento ##
+print('\nVariáveis independentes:', X_mod2.shape)
+print('Variáveis alvo (target)', y.shape)
+## Fazendo o Split da base de treino e da base de teste do modelo 2 ##
+X_treino_mod2, X_teste_mod2, y_treino_mod2, y_teste_mod2 = train_test_split(X_mod2, y, test_size= 0.3, stratify= y, shuffle= True, random_state= None)
+## Exibindo dados do treinamento do modelo 2 ##
+print("\n---------------------------")
+print("\nX Treino: ", len(X_treino_mod2))
+print("\nShape dos dados de treino: ", X_treino_mod2.shape, y_treino_mod2.shape)
+print("\nX Treino veja:\n ", X_treino_mod2)
+print("\ny Treino:\n ", y_treino_mod2)
+## Exibindo dados de teste do modelo 2 ##
+print("---------------------------")
+print("\nX Teste: ", len(X_teste_mod2))
+print("\nShape dos dados de teste: ", X_teste_mod2.shape, y_teste_mod2.shape)
+print("\nX Teste veja:\n ", X_teste_mod2)
+print("\ny Teste:\n ", y_teste_mod2)
+print("---------------------------\n")
+
+
+## Base de treinamento modelo 3 sendo criada e exibida ##
+X_mod3 = df.drop(columns=['magnesium', 'proanthocyanins', 'proline', 'hue', 'color_intensity', 'nonflavanoid_phenols', 'alcalinity_of_ash', 'malic_acid', 'total_phenols', 'alcohol', 'ash'])
+print("\n Wine Data mod 3: ")
+print(X_mod3)
+## Classificando o 'target' e exibindo as classes da base ##
+print("\nClassificação Alvo (0,1,2): ")
+y = wine.target
+print(y)
+## Exibindo a quantidade de instâncias e de variáveis da base de treinamento ##
+print('\nVariáveis independentes:', X_mod3.shape)
+print('Variáveis alvo (target)', y.shape)
+## Fazendo o Split da base de treino e da base de teste do modelo 3 ##
+X_treino_mod3, X_teste_mod3, y_treino_mod3, y_teste_mod3 = train_test_split(X_mod3, y, test_size= 0.3, stratify= y, shuffle= True, random_state= None)
+## Exibindo dados do treinamento do modelo 3 ##
+print("\n---------------------------")
+print("\nX Treino: ", len(X_treino_mod3))
+print("\nShape dos dados de treino: ", X_treino_mod3.shape, y_treino_mod3.shape)
+print("\nX Treino veja:\n ", X_treino_mod3)
+print("\ny Treino:\n ", y_treino_mod3)
+## Exibindo dados de teste do modelo 3 ##
+print("---------------------------")
+print("\nX Teste: ", len(X_teste_mod3))
+print("\nShape dos dados de teste: ", X_teste_mod3.shape, y_teste_mod3.shape)
+print("\nX Teste veja:\n ", X_teste_mod3)
+print("\ny Teste:\n ", y_teste_mod3)
+print("---------------------------\n")
 
 
 ## Base de treinamento modelo 4 sendo criada e exibida ##
@@ -141,6 +210,9 @@ print("---------------------------\n")
 
 
 ## Criação das listas que receberão os percentuais de acerto ##
+list_mod1 = []
+list_mod2 = []
+list_mod3 = []
 list_mod4 = []
 list_mod5 = []
 list_mod6 = []
@@ -150,6 +222,27 @@ list_mod6 = []
 for i in range(100):
 
     print(f"\nEsta é a {i + 1}ª execução!")
+
+    ## Random Forest Modelo 1 ##
+    myrf_mod1 = RandomForestClassifier(n_estimators= 100)
+    myrf_mod1.fit(X_treino_mod1, y_treino_mod1)
+    randomf_mod1 = myrf_mod1.score(X_teste_mod1, y_teste_mod1)
+    print("Rf Mod 1:", randomf_mod1)
+    list_mod1.append(randomf_mod1)
+
+    ## Random Forest Modelo 2 ##
+    myrf_mod2 = RandomForestClassifier(n_estimators= 100)
+    myrf_mod2.fit(X_treino_mod2, y_treino_mod2)
+    randomf_mod2 = myrf_mod2.score(X_teste_mod2, y_teste_mod2)
+    print("Rf Mod 2:", randomf_mod2)
+    list_mod2.append(randomf_mod2)
+
+    ## Random Forest Modelo 3 ##
+    myrf_mod3 = RandomForestClassifier(n_estimators= 100)
+    myrf_mod3.fit(X_treino_mod3, y_treino_mod3)
+    randomf_mod3 = myrf_mod3.score(X_teste_mod3, y_teste_mod3)
+    print("Rf Mod 3:", randomf_mod3)
+    list_mod3.append(randomf_mod3)
 
     ## Random Forest Modelo 4 ##
     myrf_mod4 = RandomForestClassifier(n_estimators= 100)
@@ -175,12 +268,31 @@ for i in range(100):
 
 ## Exibindo as listas com os dados das 100 execuções e anexar dos valores médios na lista acima ##
 print("\n---------------------------")
+print("\nValores Random Forest Modelo 1:", list_mod1)
+print("\nValores Random Forest Modelo 2:", list_mod2)
+print("\nValores Random Forest Modelo 3:", list_mod3)
 print("\nValores Random Forest Modelo 4:", list_mod4)
 print("\nValores Random Forest Modelo 5:", list_mod5)
 print("\nValores Random Forest Modelo 6:", list_mod6)
 print("\n---------------------------\n")
 
+print("\nConsiderando que: "
+        "\n--> Os atributos 'ash', 'alcalinity_ash' e 'magnesium' não possuem correlação acima de 0,5 com os demais atributos"
+        "\n--> Os atributos 'flavanoids' e 'od280/od315_of_diluted_wines' possuem 5 correlações acima de 0,5 com os demais atributos"
+        "\n--> O atributo 'total_phenols' possui 4 correlações acima de 0,5 com os demais atributos\n"
+        "-------------------------------------------------------------------------------------------\n"
+        "\nSerão realizadas as seguintes análises:"
+        "\n1) Modelo treinado apenas com a coluna 'flavanoids'"
+        "\n2) Modelo treinado apenas com a coluna 'od280/od315_of_diluted_wines'"
+        "\n3) Modelo treinado com as colunas 'flavanoids' + 'od280/od315_of_diluted_wines'"
+        "\n4) Modelo treinado com as colunas 'flavanoids' + 'total_phenols' + 'ash' + 'alcalinity_of_ash' + 'magnesium'"
+        "\n5) Modelo treinado com as colunas 'od280/od315_of_diluted_wines' + 'total_phenols + 'ash' + 'alcalinity_of_ash' + 'magnesium'"
+        "\n6) Modelo treinado com as colunas 'flavanoids' + 'od280/od315_of_diluted_wines' + 'total_phenols + 'ash' + 'alcalinity_of_ash' + 'magnesium'")
 
+
+print("\nO valor médio da Random Forest Modelo 1 é:", mean(list_mod1))
+print("\nO valor médio da Random Forest Modelo 2 é:", mean(list_mod2))
+print("\nO valor médio da Random Forest Modelo 3 é:", mean(list_mod3))
 print("\nO valor médio da Random Forest Modelo 4 é:", mean(list_mod4))
-print("O valor médio da Random Forest Modelo 5 é:", mean(list_mod5))
-print("O valor médio da Random Forest Modelo 6 é::", mean(list_mod6))
+print("\nO valor médio da Random Forest Modelo 5 é:", mean(list_mod5))
+print("\nO valor médio da Random Forest Modelo 6 é::", mean(list_mod6))
