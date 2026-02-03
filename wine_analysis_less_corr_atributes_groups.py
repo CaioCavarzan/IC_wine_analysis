@@ -145,7 +145,7 @@ for i in range(500):
     print("Rf Mod all:", randomf_mod_all)
     list_mod_all.append(randomf_mod_all)
 
-## Exibindo as listas com os dados das 100 execuções e anexar dos valores médios na lista acima ##
+## Exibindo as listas com os dados das 500 execuções e anexar dos valores médios na lista acima ##
 print("\n---------------------------")
 print("\nValores Random Forest Modelo ash:", list_mod_alcohol_malic_acid)
 print("\nValores Random Forest Modelo alcalinity_of_ash:", list_mod_alcohol_alcalinity_of_ash)

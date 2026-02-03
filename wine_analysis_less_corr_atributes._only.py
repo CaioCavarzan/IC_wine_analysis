@@ -193,7 +193,7 @@ for i in range(400):
     list_mod_color_intensity.append(randomf_mod_color_intensity)
 
 
-## Exibindo as listas com os dados das 100 execuções e anexar dos valores médios na lista acima ##
+## Exibindo as listas com os dados das 400 execuções e anexar dos valores médios na lista acima ##
 print("\n---------------------------")
 print("\nValores Random Forest Modelo ash:", list_mod_ash)
 print("\nValores Random Forest Modelo alcalinity_of_ash:", list_mod_alcalinity_of_ash)
